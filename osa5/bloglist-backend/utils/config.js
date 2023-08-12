@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 const MONGODB_URI = process.env.MONGODB_URI
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 3003
 const SECRET = process.env.SECRET
 
 console.log('MONGODB_URI:', MONGODB_URI)

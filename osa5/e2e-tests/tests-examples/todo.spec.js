@@ -233,7 +233,7 @@ test.describe('Counter', () => {
   test('should display the current number of todo items', async ({ page }) => {
     const newTodo = page.getByPlaceholder('What needs to be done?');
 
-    const todoCount = page.getByTestId('todo-count')
+    const todoCount = page.getByTestId('todo-count');
 
     await newTodo.fill(TODO_ITEMS[0]);
     await newTodo.press('Enter');
