@@ -1,0 +1,29 @@
+h2 {
+  color: black;
+  font-style: Helvetica;
+}
+
+.person {
+  color: #3a3a3a;
+  padding-top: 3px;
+  font-size: 15px;
+}
+
+.notification {
+  font-size: 16px;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 0px;
+}
+
+.success {
+  color: green;
+  background-color: azure;
+}
+
+.error {
+  color: red;
+  background-color: blanchedalmond;
+}
