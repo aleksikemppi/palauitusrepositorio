@@ -16,10 +16,8 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log('Connected to MongoDB');
         if (!name && !number) {
-            // Find and print all persons
             return Person.find({});
         } else {
-            // Create a new person
             const person = new Person({ name, number, id });
             return person.save();
         }
