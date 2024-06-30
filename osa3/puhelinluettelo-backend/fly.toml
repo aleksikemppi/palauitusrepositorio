@@ -1,12 +1,15 @@
-# fly.toml app configuration file generated for puhelinluettelo-backend-sparkling-firefly-9963 on 2024-06-29T16:39:05Z
+# fly.toml app configuration file generated for puhelinluettelo-backend-morning-flower-9060 on 2024-06-29T19:53:16Z
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'puhelinluettelo-backend-sparkling-firefly-9963'
+app = 'puhelinluettelo-backend-morning-flower-9060'
 primary_region = 'ams'
 
 [build]
+
+[env]
+  PORT = '3000'
 
 [http_service]
   internal_port = 3000

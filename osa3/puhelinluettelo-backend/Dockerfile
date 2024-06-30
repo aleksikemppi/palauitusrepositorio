@@ -1,25 +1,39 @@
-# Stage 1: Build the frontend
-FROM node:14 as build-frontend
+# syntax = docker/dockerfile:1
 
-WORKDIR /app/frontend
+# Adjust NODE_VERSION as desired
+ARG NODE_VERSION=20.14.0
+FROM node:${NODE_VERSION}-slim as base
 
-COPY ../puhelinluettelo/package*.json ./
-RUN npm install
-COPY ../puhelinluettelo/ ./
-RUN npm run build
+LABEL fly_launch_runtime="Node.js"
 
-# Stage 2: Build the backend
-FROM node:14
+# Node.js app lives here
+WORKDIR /app
 
-WORKDIR /app/backend
+# Set production environment
+ENV NODE_ENV="production"
 
-COPY package*.json ./
-RUN npm install
-COPY . .
 
-# Copy frontend build to backend build directory
-COPY --from=build-frontend /app/frontend/dist ./build
+# Throw-away build stage to reduce size of final image
+FROM base as build
 
-CMD [ "node", "index.js" ]
+# Install packages needed to build node modules
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y build-essential node-gyp pkg-config python-is-python3
 
-EXPOSE 3001
+# Install node modules
+COPY --link package-lock.json package.json ./
+RUN npm ci
+
+# Copy application code
+COPY --link . .
+
+
+# Final stage for app image
+FROM base
+
+# Copy built application
+COPY --from=build /app /app
+
+# Start the server by default, this can be overwritten at runtime
+EXPOSE 3000
+CMD [ "npm", "run", "start" ]
