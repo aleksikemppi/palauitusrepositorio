@@ -3,7 +3,7 @@ Content-Type: application/json
 
 {
   "title": "My New Blog",
-  "author": "John moi",
+  "author": "axxxxx moi",
   "url": "http://example.com/my-new-blog",
   "likes": 9485
 }

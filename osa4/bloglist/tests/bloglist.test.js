@@ -40,9 +40,6 @@ describe('blogs count', () => {
     }
   ]
 
-
-
-  // tests
   test('dummy returns one', () => {
     const blogs = []
 
