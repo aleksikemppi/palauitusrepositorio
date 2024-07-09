@@ -1,57 +1,44 @@
 import React from 'react';
 
-const Header = ({ course }) => {
-    if (course && course.name) {
-      return <h1>{course.name}</h1>;
-    } else {
-      return <h1>Unknown course</h1>;
+const Courses = () => {
+  const courseParts = [
+    {
+      name: 'Half Stack application development',
+      parts: [
+        { name: 'Fundamentals of React', exercises: 10 },
+        { name: 'Using props to pass data', exercises: 7 },
+        { name: 'State of a component', exercises: 14 },
+        { name: 'Redux', exercises: 11 }
+      ],
+      total: 42
+    },
+    {
+      name: 'Node.js',
+      parts: [
+        { name: 'Routing', exercises: 3 },
+        { name: 'Middlewares', exercises: 7 }
+      ],
+      total: 10
     }
-  }
-  
-  const Total = ({ parts }) => {
-    if (Array.isArray(parts) && parts.length > 0) {
-      const sum = parts.reduce((total, part) => {
-        return total + part.exercises;
-      }, 0);
-  
-      return <p><b>Number of exercises {sum}</b></p>;
-    } else {
-      return <p><b>Unknown number of exercises</b></p>;
-    }
-  } 
-  
-  const Content = ({ parts }) => {
-    if (Array.isArray(parts) && parts.length > 0) {
-      return (
-        <div>
-          <p>Course info</p>
-          <ul>
-            {parts.map((part, index) => (
-              <li key={index}>
-                {part.name + " " +  part.exercises}
+  ];
+
+  return (
+    <div>
+      {courseParts.map(course => (
+        <div key={course.name}>
+          <h2 style={{ marginTop: '20px' }}>{course.name}</h2>
+          <ul style={{ listStyleType: 'none', paddingLeft: 0 }}>
+            {course.parts.map(part => (
+              <li key={part.name} style={{ marginBottom: '5px' }}>
+                {part.name} {part.exercises}
               </li>
             ))}
           </ul>
-        </div>
-      );
-    } else {
-      return <p>No course info available</p>;
-    }
-  }
-const Courses = ({ courses }) => {
-  return (
-    <div>
-      {courses.map(course => (
-        <div key={course.id}>
-          <Header course={course} />
-          <Content parts={course.parts} />
-          <Total parts={course.parts} />
+          <strong>total of {course.total} exercises</strong>
         </div>
       ))}
     </div>
   );
 };
-
-
 
 export default Courses;
