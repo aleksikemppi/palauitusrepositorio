@@ -1,4 +1,5 @@
-# Running instructions 
+# running instructions
 
-1. npm install vite --save-dev
+1. npm install 
 2. npm run dev
+
