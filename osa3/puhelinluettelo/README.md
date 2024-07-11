@@ -1,4 +1,4 @@
-# Running application instructions
+# Running instructions 
 
-1. npm run dev
-2. npx json-server --port=3001 --watch db.json
+1. npm install 
+2. npm run dev or npm start
