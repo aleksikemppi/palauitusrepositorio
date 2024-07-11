@@ -3,10 +3,11 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const path = require('path');
 const uniqueValidator = require('mongoose-unique-validator');
 
 const app = express();
-app.use(express.static('build'));
+app.use(express.static(path.join(__dirname, '..', 'frontend', 'dist')));
 app.use(express.json());
 app.use(cors());
 
