@@ -80,7 +80,6 @@ describe('blogs count', () => {
     expect(result).toEqual(expectedResult)
   })
  
-  // test.only('mostBlogs returns author with most likes', () => {
     test('mostBlogs returns author with most likes', () => {
     const expectedResult = { author: 'Edsger W. Dijkstra', likes: 17 }
 
